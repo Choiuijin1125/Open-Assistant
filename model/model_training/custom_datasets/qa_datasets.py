@@ -454,6 +454,8 @@ def load_alpaca_dataset(
         dataset = load_dataset("yahma/alpaca-cleaned", cache_dir=cache_dir)
     elif dataset_name == "code_alpaca":
         dataset = load_dataset("sahil2801/CodeAlpaca-20k", cache_dir=cache_dir)
+    elif dataset_name == "koalpaca":
+        dataset = load_dataset("/app/input/dataset/koalpaca", cache_dir=cache_dir)        
     else:
         raise ValueError(f"Expected dataset_name to be 'alapaca' or 'code_alpaca'. Received {dataset_name}.")
 
