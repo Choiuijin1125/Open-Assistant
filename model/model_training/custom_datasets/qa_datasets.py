@@ -490,9 +490,9 @@ class Vicuna(Dataset):
                 elif speaker == "human":
                     # replace empty messages with one of the following
                     message = random.choice(["...", "Please continue", "Go on", ""])
-            # remove markdown escaping in revision 192ab2185289094fc556ec8ce5ce1e8e587154ca
-            # python-markdownify with escape_asterisks & escape_underscores True is used
-            # for pre-processing the dataset.
+            # remove markdown escaping in case
+            # python-markdownify with escape_asterisks & escape_underscores True was used
+            # to pre-process the dataset.
             # See also https://github.com/LAION-AI/Open-Assistant/issues/2510
             message = message.replace(r"\_", "_")
             message = message.replace(r"\*", "*")
@@ -524,10 +524,16 @@ class Vicuna(Dataset):
         self.mode = mode
 
         dataset = load_dataset(
+<<<<<<< HEAD
             "anon8231489123/ShareGPT_Vicuna_unfiltered",
             cache_dir=cache_dir,
             data_files=["ShareGPT_V3_unfiltered_cleaned_split.json"],
             # revision="7b8551404f3de5704d634e7516b9ff77be3e2700",
+=======
+            "Aeala/ShareGPT_Vicuna_unfiltered",
+            cache_dir=cache_dir,
+            data_files=["ShareGPT_2023.05.04v0_Wasteland_Edition.json"],
+>>>>>>> 2360a58fa4aefd7c9e3324a2751ebc5677a938de
         )["train"]
 
         for data in dataset:
