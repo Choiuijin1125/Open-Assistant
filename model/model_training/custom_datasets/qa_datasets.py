@@ -524,17 +524,9 @@ class Vicuna(Dataset):
         self.mode = mode
 
         dataset = load_dataset(
-<<<<<<< HEAD
             "anon8231489123/ShareGPT_Vicuna_unfiltered",
             cache_dir=cache_dir,
-            data_files=["ShareGPT_V3_unfiltered_cleaned_split.json"],
-            # revision="7b8551404f3de5704d634e7516b9ff77be3e2700",
-=======
-            "Aeala/ShareGPT_Vicuna_unfiltered",
-            cache_dir=cache_dir,
-            data_files=["ShareGPT_2023.05.04v0_Wasteland_Edition.json"],
->>>>>>> 2360a58fa4aefd7c9e3324a2751ebc5677a938de
-        )["train"]
+            data_files=["ShareGPT_V3_unfiltered_cleaned_split.json"])["train"]
 
         for data in dataset:
             if (qa := self.process_vicuna_conversations(data, input_max_length=input_max_length)) is not None:
