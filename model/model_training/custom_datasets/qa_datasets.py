@@ -335,7 +335,7 @@ class JokeExplaination(Dataset):
                 data = json.loads(line)
                 joke = data["joke"]
                 # DO NOT change this
-                # it's the data that had syntax error
+                # its the data that had syntax error
                 explanation = data["explaination"]
                 self.pairs.append(create_dataset_entry_qa(mode="sft", questions=[joke], answers=[explanation]))
 
@@ -454,6 +454,10 @@ def load_alpaca_dataset(
         dataset = load_dataset("yahma/alpaca-cleaned", cache_dir=cache_dir)
     elif dataset_name == "code_alpaca":
         dataset = load_dataset("sahil2801/CodeAlpaca-20k", cache_dir=cache_dir)
+    elif dataset_name == "koalpaca":
+        dataset = load_dataset("/backup/workspaces/jin/nlp/Open-Assistant/model/model_training/koalpaca_datasets", cache_dir=cache_dir)
+    elif dataset_name == "kullm-v2":
+        dataset = load_dataset("nlpai-lab/kullm-v2", cache_dir=cache_dir)
     else:
         raise ValueError(f"Expected dataset_name to be 'alapaca' or 'code_alpaca'. Received {dataset_name}.")
 
@@ -520,10 +524,10 @@ class Vicuna(Dataset):
         self.mode = mode
 
         dataset = load_dataset(
-            "gozfarb/ShareGPT_Vicuna_unfiltered",
+            "anon8231489123/ShareGPT_Vicuna_unfiltered",
             cache_dir=cache_dir,
-            data_files=["ShareGPT_2023.05.02v0_unfiltered_cleaned_split.json"],
-            revision="7b8551404f3de5704d634e7516b9ff77be3e2700",
+            data_files=["ShareGPT_V3_unfiltered_cleaned_split.json"],
+            # revision="7b8551404f3de5704d634e7516b9ff77be3e2700",
         )["train"]
 
         for data in dataset:
